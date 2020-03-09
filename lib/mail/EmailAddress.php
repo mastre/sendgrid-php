@@ -74,7 +74,7 @@ class EmailAddress implements \JsonSerializable
     public function setEmailAddress($emailAddress)
     {
         if (!(is_string($emailAddress) &&
-            filter_var($emailAddress, FILTER_VALIDATE_EMAIL))
+            filter_var($emailAddress, FILTER_VALIDATE_EMAIL, FILTER_FLAG_EMAIL_UNICODE))
         ) {
             throw new TypeException(
                 "{$emailAddress} must be valid and of type string."
