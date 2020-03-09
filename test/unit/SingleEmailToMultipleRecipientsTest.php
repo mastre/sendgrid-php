@@ -41,6 +41,10 @@ class SingleEmailToMultipleRecipientsTest extends BaseTestClass
           {
             "email": "test+test3@example.com",
             "name": "Example User3"
+          },
+          {
+            "email": "test+unicodefrançois@example.com",
+            "name": "Example Unicode User1"
           }
         ]
       }
@@ -73,7 +77,8 @@ JSON;
         $tos = [
             new \SendGrid\Mail\To("test+test1@example.com", "Example User1"),
             new \SendGrid\Mail\To("test+test2@example.com", "Example User2"),
-            new \SendGrid\Mail\To("test+test3@example.com", "Example User3")
+            new \SendGrid\Mail\To("test+test3@example.com", "Example User3"),
+            new \SendGrid\Mail\To("test+unicodefrançois@example.com", "Example Unicode User1")
         ];
         $subject = new \SendGrid\Mail\Subject("Sending with Twilio SendGrid is Fun");
         $plainTextContent = new \SendGrid\Mail\PlainTextContent(
@@ -104,7 +109,8 @@ JSON;
         $tos = [
             "test+test1@example.com" => "Example User1",
             "test+test2@example.com" => "Example User2",
-            "test+test3@example.com" => "Example User3"
+            "test+test3@example.com" => "Example User3",
+            "test+unicodefrançois@example.com" => "Example Unicode User1"
         ];
         $email->addTos($tos);
         $email->setSubject("Sending with Twilio SendGrid is Fun");
